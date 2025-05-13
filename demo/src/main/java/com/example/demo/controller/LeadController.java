@@ -32,7 +32,8 @@ public class LeadController {
 
         StringBuilder xml = new StringBuilder();
         xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        xml.append("<leads xmlns=\"urn:leads\">\n");
+        // Ändra namespace till det som förväntas av klienten
+        xml.append("<leads xmlns=\"http://webscraper.se.leads-format.1.0\">\n");
 
         for (Lead lead : leads) {
             xml.append("<lead id=\"").append(lead.getId()).append("\">\n");
