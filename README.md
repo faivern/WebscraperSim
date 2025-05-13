@@ -5,7 +5,7 @@ Detta är en minimal simulering av Webscraper AB:s API, utvecklad i syfte att te
 
 ## Funktionalitet
 
-- Exponerar ett GET-endpoint: `/api/leads`
-- Returnerar XML-data enligt strukturen definierad XSD
+- Exponerar ett GET-endpoint: `/api/leads` eller `/api/leads?count=10000`
+- Returnerar XML-data enligt angiven XSD
 - Innehåller tre statiska test-leads
-- Fungerar helt utan databas – använder dummydata
+- Fungerar helt utan databas, använder dummydata från `https://github.com/DiUS/java-faker`
