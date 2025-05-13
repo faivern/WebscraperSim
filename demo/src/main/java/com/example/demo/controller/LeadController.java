@@ -19,8 +19,16 @@ public class LeadController {
     }
 
     @GetMapping(value = "/api/leads", produces = MediaType.APPLICATION_XML_VALUE)
-    public String getLeadsAsXml() {
-        List<Lead> leads = leadRepository.findAll();
+    public String getLeadsAsXml(@RequestParam(required = false, defaultValue = "3") Integer count) {
+        // Validera count för att undvika negativa värden eller för stora värden
+        if (count < 0) {
+            count = 3; // Default om felaktigt värde
+        }
+        if (count > 10000) {
+            count = 10000; // Max 10 000 leads
+        }
+
+        List<Lead> leads = leadRepository.findAll(count);
 
         StringBuilder xml = new StringBuilder();
         xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
